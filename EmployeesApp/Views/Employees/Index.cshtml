@@ -4,52 +4,51 @@
 @{
     ViewData["Title"] = "The list of employees";
 }
-
-<div class="container-xl">
-	<div class="table-responsive">
-		<div class="table-wrapper">
-			<div class="table-title">
-				<div class="row">
-					<div class="col-sm-6">
-						<h2>Manage <b>Employees</b></h2>
-					</div>
-					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><span>Add New Employee</span></a>
-					</div>
-				</div>
+<div class="container">
+	<div class="table-title">
+		<div class="row">
+			<div class="col-sm-6">
+				<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><span>Add New Employee</span></a>
 			</div>
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>SecondName</th>
-						<th>Age</th>
-						<th>Sex</th>
-						<th>Deparment</th>
-						<th>Experiences</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach(var employee in Model.Employees)
-					{
-						<tr>
-							<td>@employee.Name</td>
-							<td>@employee.SecondName</td>
-							<td>@employee.Age</td>
-							<td>@employee.Sex.ToString()</td>
-							<td>@employee.DepartmentName</td>
-							<td>@employee.ProgrammingLanguage</td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="fillCreateUpdateModal(@employee.Id)">Edit</a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="fillDeleteModal(@employee.Id)">Delete</a>
-							</td>
-						</tr>
-					}
-				</tbody>
-			</table>
 		</div>
 	</div>
+	<div class="form-group pull-right">
+		<input type="text" class="search form-control" placeholder="Search ...">
+	</div>
+	<span class="counter pull-right"></span>
+	<table class="table table-hover table-bordered results">
+		<thead>
+			<tr>
+				<th class="col-md-3 col-xs-3">Name</th>
+				<th class="col-md-3 col-xs-3">SecondName</th>
+				<th class="col-md-1 col-xs-1">Age</th>
+				<th class="col-md-2 col-xs-2">Sex</th>
+				<th class="col-md-3 col-xs-3">Deparment</th>
+				<th class="col-md-3 col-xs-3">Experience</th>
+				<th class="col-md-3 col-xs-3">Actions</th>
+			</tr>
+			<tr class="warning no-result">
+				<td colspan="4"><i class="fa fa-warning"></i> No result</td>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var employee in Model.Employees)
+			{
+				<tr>
+					<td>@employee.Name</td>
+					<td>@employee.SecondName</td>
+					<td>@employee.Age</td>
+					<td>@employee.Sex.ToString()</td>
+					<td>@employee.DepartmentName</td>
+					<td>@employee.ProgrammingLanguage</td>
+					<td>
+						<a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="fillCreateUpdateModal(@employee.Id)">Edit</a>
+						<a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="fillDeleteModal(@employee.Id)">Delete</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
 </div>
 <div id="addEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
