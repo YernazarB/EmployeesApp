@@ -1,27 +1,28 @@
 ﻿@model RegisterViewModel
 
-<h2>Registration</h2>
+@if (Model?.ErrorMessage is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
 
 <form asp-action="Register" asp-controller="Account" asp-anti-forgery="true">
-    <div class="validation" asp-validation-summary="ModelOnly"></div>
-    <div>
-        <div>
-            <label asp-for="Email">Email: </label><br />
-            <input type="text" asp-for="Email" />
-            <span asp-validation-for="Email" />
-        </div>
-        <div>
-            <label asp-for="Password">Password: </label><br />
-            <input asp-for="Password" />
-            <span asp-validation-for="Password" />
-        </div>
-        <div>
-            <label asp-for="ConfirmPassword">Confirm password:</label><br />
-            <input asp-for="ConfirmPassword" />
-            <span asp-validation-for="ConfirmPassword" />
-        </div>
-        <div>
-            <input type="submit" value="Register" />
-        </div>
+    <div data-mdb-input-init class="form-outline mb-4">
+        <input type="email" id="email" name="email" class="form-control" />
+        <label class="form-label" for="email">Email address</label>
     </div>
+
+    <div data-mdb-input-init class="form-outline mb-4">
+        <input type="password" id="password" name="password" class="form-control" />
+        <label class="form-label" for="password">Password</label>
+    </div>
+
+    <div data-mdb-input-init class="form-outline mb-4">
+        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" />
+        <label class="form-label" for="confirmPassword">Confirm password</label>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Register</button>
 </form>

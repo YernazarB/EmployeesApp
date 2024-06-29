@@ -39,6 +39,8 @@ namespace EmployeesApp.Controllers
 				ModelState.AddModelError("", "Incorrect login or password.");
 			}
 
+			model.ErrorMessage = string.Join("\n", ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage));
+
 			return View(model);
 		}
 
@@ -64,7 +66,9 @@ namespace EmployeesApp.Controllers
 					ModelState.AddModelError("", "Existing email address.");
 			}
 
-			return View(model);
+            model.ErrorMessage = string.Join("\n", ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage));
+
+            return View(model);
 		}
 
 		private async Task Authenticate(string? userName)
