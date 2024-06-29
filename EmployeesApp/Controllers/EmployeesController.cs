@@ -1,11 +1,13 @@
 ﻿using EmployeesApp.Core.Models;
 using EmployeesApp.Core.Services;
 using EmployeesApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeesApp.Controllers
 {
-    public class EmployeesController : Controller
+    [Authorize]
+	public class EmployeesController : Controller
     {
         private readonly IEmployeesService _service;
 

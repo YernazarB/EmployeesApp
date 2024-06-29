@@ -13,5 +13,6 @@ namespace EmployeesApp.DataAccess
         public DbSet<EmployeeEntity> Employees { get; set; }
         public DbSet<ProgrammingLanguageEntity> ProgrammingLanguages { get; set; }
         public DbSet<ExperienceEntity> Experiences { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
