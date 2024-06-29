@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeesApp.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240629121606_AddAccountsTable")]
-    partial class AddAccountsTable
+    [Migration("20240629135034_AddUsersTable")]
+    partial class AddUsersTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -124,7 +124,7 @@ namespace EmployeesApp.DataAccess.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
